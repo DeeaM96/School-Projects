@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hvac-env
+data:
+  HVAC_HOST: "http://35.203.86.116"
+  COLD_TH: "40"
+  HOT_TH: "45"
+  NB_TICKS: "8"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hvac-token
+  namespace: team01-10
+data:
+  HVAC_TOKEN: dUM0UzIwYjE0aQ==
+type: Opaque
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dockercred
+  namespace: team01-10
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJkYXZpZG9saXZpZXJib3VjaGFyZGV0cyIsInBhc3N3b3JkIjoiTE9HNjgwbGFiMiM/IiwiZW1haWwiOiJkYXZpZC1vbGl2aWVyLmJvdWNoYXJkLjFAZW5zLmV0c210bC5jYSIsImF1dGgiOiJaR0YyYVdSdmJHbDJhV1Z5WW05MVkyaGhjbVJsZEhNNlRFOUhOamd3YkdGaU1pTS8ifX19
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hvac-deployment
+  namespace: team01-10
+  labels:
+    app: hvac
+spec:
+  selector:
+    matchLabels:
+      app: hvac
+  template:
+    metadata:
+      labels:
+        app: hvac
+    spec:
+      containers:
+        - name: hvac
+          image: davidolivierbouchardets/hvac-container:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "75m"
+            limits:
+              memory: "64Mi"
+              cpu: "150m"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: hvac-token
+            - configMapRef:
+                name: hvac-env
+      imagePullSecrets:
+        - name: dockercred
+
+

@@ -1,0 +1,7 @@
+requests~=2.27.1
+datetime
+tabulate~=0.8.9
+json
+sys
+
+PyMySQL~=1.0.2

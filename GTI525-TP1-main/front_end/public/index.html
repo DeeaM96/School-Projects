@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <script type="text/javascript">
+      var stations = {};
+    </script>
+
+    <!--Bootstrap DataTables-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"
+    />
+
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"
+    ></script>
+
+    <!-- import station data file -->
+    <script src="<%= BASE_URL %>csv_data/Station-Inventory-EN.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/118.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/1865.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/2205.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/3002.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/3328.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/3698.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/4337.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/4789.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/4932.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/5097.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/5251.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/5415.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/6207.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/6358.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/6633.csv.js"></script>
+    <script src="<%= BASE_URL %>csv_data/6720.csv.js"></script>
+
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
