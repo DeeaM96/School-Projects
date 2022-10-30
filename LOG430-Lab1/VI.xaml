@@ -1,0 +1,43 @@
+﻿<Window x:Class="LOG430_VI.VI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LOG430_VI"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="VIlle Intelligente - Topic Management" Closed="Window_Closed" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Button Name="addTopic" Content="Add Topic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" Click="AddTopic_Click" Margin="678,38,0,0"/>
+        <Button Name="removeTopic" Content="Remove Topic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" Click="RemoveTopic_Click" Margin="10,217,0,0"/>
+
+        <TextBox Name="addTopicTxtBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="774"/>
+        <Label Content="ex.: worldcongress2017/pilot__resologi/odtf1/ca/qc/mtl/mobil/infra/gateway/ipc0/gat-00000-01/heartbeat" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" FontSize="10" FontStyle="Italic"/>
+
+        <Label Content="Active Topics" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="10,55,0,0"/>
+        <ListBox Name="activeTopics" HorizontalAlignment="Left" Height="131" Margin="10,81,0,0" VerticalAlignment="Top" Width="774" SelectionMode="Multiple"/>
+
+        <Label Content="Output" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <ListView Name="mqttOutput" HorizontalAlignment="Left" Margin="10,274,10,10" VerticalAlignment="Top" Height="267" Width="774">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Topic" Width="75">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding topic}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Message" Width="693">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding msg}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
